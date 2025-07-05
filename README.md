@@ -1,11 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+11.2. Proceso de Despliegue
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Instalación de Dependencias
+
+Instalar XAMPP (Recomendado para entorno de desarrollo)
+
+Descargar XAMPP desde https://www.apachefriends.org/
+
+Instalar con las opciones predeterminadas (incluye Apache, MySQL, PHP, phpMyAdmin)
+
+Asegurarse de que los servicios de Apache y MySQL estén en ejecución
+
+Instalar Node.js
+
+Descargar el instalador de Node.js desde https://nodejs.org/
+
+Ejecutar el instalador con configuración predeterminada
+
+Instalar Composer
+
+Descargar el instalador de Composer desde https://getcomposer.org/
+
+Durante la instalación, seleccionar el PHP que viene con XAMPP (normalmente en C:\xampp\php\php.exe)
+
+Instalar Git (opcional, solo para clonar repositorio)
+
+Descargar Git desde https://git-scm.com/
+
+Instalar con configuración predeterminada
+
+Configuración Inicial
+
+Opción 1: Desde Repositorio Git (Recomendado)
+
+Pasos Completos para Clonar el Repositorio
+
+Abrir el Símbolo del Sistema (CMD) o PowerShell
+
+Presiona Windows + R, escribe cmd y presiona Enter
+
+O busca "PowerShell" en el menú de inicio
+
+Navegar al directorio de XAMPP
+
+cmd
+cd C:\xampp\htdocs
+
+Clonar el repositorio
+
+cmd
+git clone https://github.com/ELVERANTONY/PROYECTO1.git aventuratec
+
+Navegar al directorio del proyecto
+
+cmd
+cd PROYECTO1
+
+Opción 2: Desde Archivo ZIP
+
+Descargar el archivo ZIP del proyecto
+
+Extraer el contenido en C:\xampp\htdocs\aventuratec
+
+Abrir CMD o PowerShell y navegar al directorio:
+cd C:\xampp\htdocs\PROYECTO1
+
+Configuración del Proyecto
+
+Instalar dependencias de PHP
+
+composer install
+
+Instalar dependencias de Node.js
+
+npm install
+
+Copiar el archivo .env de ejemplo
+
+copy .env.example .env
+
+Generar clave de aplicación
+
+php artisan key:generate
+
+Configuración de la Base de Datos
+
+Abrir phpMyAdmin en http://localhost/phpmyadmin/
+
+Crear una nueva base de datos llamada bda_proy
+
+Editar el archivo .env con los datos de conexión:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bda_proy
+DB_USERNAME=root
+DB_PASSWORD=
+
+Instalación Final
+cmd
+Ejecutar migraciones y seeders
+
+php artisan migrate --seed
+
+
+# Compilar assets
+npm run build
+
+# Configurar permisos de almacenamiento
+php artisan storage:link
+
+Puesta en Marcha
+Para Entorno de Desarrollo
+
+# Iniciar servidor de desarrollo
+php artisan serve
+
+El sitio estará disponible en http://127.0.0.1:8000
+
+
 
 ## About Laravel
 
