@@ -1,122 +1,68 @@
-11.2. Proceso de Despliegue
+# 11.2. Proceso de Despliegue
 
-Instalación de Dependencias
+# INSTALACIÓN DE DEPENDENCIAS
 
-Instalar XAMPP (Recomendado para entorno de desarrollo)
+# Descargar e instalar XAMPP desde:
+# https://www.apachefriends.org/
+# (Instalar con las opciones predeterminadas: incluye Apache, MySQL, PHP, phpMyAdmin)
+# Verifica que los servicios de Apache y MySQL estén en ejecución desde el panel de XAMPP
 
-Descargar XAMPP desde https://www.apachefriends.org/
+# Descargar e instalar Node.js desde:
+# https://nodejs.org/
+# (Ejecutar el instalador con la configuración predeterminada)
 
-Instalar con las opciones predeterminadas (incluye Apache, MySQL, PHP, phpMyAdmin)
+# Descargar e instalar Composer desde:
+# https://getcomposer.org/
+# (Durante la instalación, seleccionar PHP ubicado en: C:\xampp\php\php.exe)
 
-Asegurarse de que los servicios de Apache y MySQL estén en ejecución
+# Descargar e instalar Git (opcional, si usarás clonación desde GitHub):
+# https://git-scm.com/
 
-Instalar Node.js
+# CONFIGURACIÓN INICIAL – OPCIÓN 1: CLONAR DESDE GITHUB (RECOMENDADO)
 
-Descargar el instalador de Node.js desde https://nodejs.org/
-
-Ejecutar el instalador con configuración predeterminada
-
-Instalar Composer
-
-Descargar el instalador de Composer desde https://getcomposer.org/
-
-Durante la instalación, seleccionar el PHP que viene con XAMPP (normalmente en C:\xampp\php\php.exe)
-
-Instalar Git (opcional, solo para clonar repositorio)
-
-Descargar Git desde https://git-scm.com/
-
-Instalar con configuración predeterminada
-
-Configuración Inicial
-
-Opción 1: Desde Repositorio Git (Recomendado)
-
-Pasos Completos para Clonar el Repositorio
-
-Abrir el Símbolo del Sistema (CMD) o PowerShell
-
-Presiona Windows + R, escribe cmd y presiona Enter
-
-O busca "PowerShell" en el menú de inicio
-
-Navegar al directorio de XAMPP
-
-cmd
 cd C:\xampp\htdocs
-
-Clonar el repositorio
-
-cmd
 git clone https://github.com/ELVERANTONY/PROYECTO1.git aventuratec
+cd aventuratec
 
-Navegar al directorio del proyecto
+# CONFIGURACIÓN INICIAL – OPCIÓN 2: USAR ARCHIVO ZIP
+# (Solo si no usarás Git)
 
-cmd
-cd PROYECTO1
+# 1. Descargar el archivo ZIP del proyecto
+# 2. Extraer su contenido en C:\xampp\htdocs\aventuratec
+# 3. Luego ejecutar:
+cd C:\xampp\htdocs\aventuratec
 
-Opción 2: Desde Archivo ZIP
+# CONFIGURACIÓN DEL PROYECTO
 
-Descargar el archivo ZIP del proyecto
+composer install           # Instalar dependencias de PHP
+npm install                # Instalar dependencias de Node.js
+copy .env.example .env     # Copiar archivo de entorno
+php artisan key:generate   # Generar clave de la aplicación
 
-Extraer el contenido en C:\xampp\htdocs\aventuratec
+# CONFIGURACIÓN DE LA BASE DE DATOS
 
-Abrir CMD o PowerShell y navegar al directorio:
-cd C:\xampp\htdocs\PROYECTO1
+# 1. Abrir: http://localhost/phpmyadmin/
+# 2. Crear base de datos llamada: bda_proy
+# 3. Editar archivo .env con esta configuración:
 
-Configuración del Proyecto
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=bda_proy
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-Instalar dependencias de PHP
+# INSTALACIÓN FINAL
 
-composer install
+php artisan migrate --seed   # Ejecutar migraciones y seeders
+npm run build                # Compilar los assets
+php artisan storage:link     # Crear enlace simbólico para storage
 
-Instalar dependencias de Node.js
+# PUESTA EN MARCHA (ENTORNO DE DESARROLLO)
 
-npm install
-
-Copiar el archivo .env de ejemplo
-
-copy .env.example .env
-
-Generar clave de aplicación
-
-php artisan key:generate
-
-Configuración de la Base de Datos
-
-Abrir phpMyAdmin en http://localhost/phpmyadmin/
-
-Crear una nueva base de datos llamada bda_proy
-
-Editar el archivo .env con los datos de conexión:
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=bda_proy
-DB_USERNAME=root
-DB_PASSWORD=
-
-Instalación Final
-cmd
-Ejecutar migraciones y seeders
-
-php artisan migrate --seed
-
-
-# Compilar assets
-npm run build
-
-# Configurar permisos de almacenamiento
-php artisan storage:link
-
-Puesta en Marcha
-Para Entorno de Desarrollo
-
-# Iniciar servidor de desarrollo
-php artisan serve
-
-El sitio estará disponible en http://127.0.0.1:8000
+php artisan serve            # Iniciar el servidor local
+# El sistema estará disponible en:
+# http://127.0.0.1:8000
 
 
 
