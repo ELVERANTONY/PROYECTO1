@@ -21,8 +21,8 @@
 # CONFIGURACIÓN INICIAL – OPCIÓN 1: CLONAR DESDE GITHUB (RECOMENDADO)
 
 cd C:\xampp\htdocs
-git clone https://github.com/ELVERANTONY/PROYECTO1.git aventuratec
-cd aventuratec
+git clone https://github.com/ELVERANTONY/PROYECTO1.git PROYECTO1
+cd PROYECTO1
 
 # CONFIGURACIÓN INICIAL – OPCIÓN 2: USAR ARCHIVO ZIP
 # (Solo si no usarás Git)
